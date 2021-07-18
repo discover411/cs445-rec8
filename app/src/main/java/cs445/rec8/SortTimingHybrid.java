@@ -18,7 +18,7 @@ public class SortTimingHybrid {
         // step size when increasing array size
         int step = 1;
         // base case for hybridQuickSort()
-        int baseCase = 1;
+        int baseCase = 30;
 
         // NOTE:
         // Sometimes, there is a very sudden drop-off in runtime as the JVM's heavy optimizations
@@ -83,7 +83,17 @@ public class SortTimingHybrid {
      */
     public static long timeHybridQuicksort(int numTrials, int baseCase) {
         // TODO: Implement this method to utilize insertionSort/quickSort hybrid with some baseCase for switching
-        return 0;
+    	long time = 0;
+    	for (int trial =0; trial < numTrials; trial++)
+    	{
+    		Sorting.shuffle(a);
+    		long start = System.nanoTime(); //seconds* 10^-9
+    		Sorting.hybridQuickSort(a, baseCase);
+    		time += System.nanoTime() -start;
+    		
+    		
+    	}
+    	  	return time/numTrials; //total Summed up duration time /1000
     }
 
     /**
